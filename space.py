@@ -30,3 +30,21 @@ def draw_star(length):
     for _ in range(5):
         turtle.forward(length)
         turtle.right(144)
+
+def random_star():
+    """
+    Draw a single star at a random location, orientation, and size.
+    """
+    x = random.randint(-SCREEN_WIDTH // 2, SCREEN_WIDTH // 2)
+    y = random.randint(-SCREEN_HEIGHT // 2, SCREEN_HEIGHT // 2)
+    size = random.randint(STAR_MIN_LENGTH, STAR_MAX_LENGTH)
+    angle = random.randint(0, 360)
+    
+    turtle.penup()
+    turtle.goto(x, y)
+    turtle.setheading(angle)
+
+    # Use random colors
+    turtle.color("white", random.choice(["white", "yellow", "lightblue", "lightyellow"]))
+    turtle.pendown()
+    draw_star(size)
