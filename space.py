@@ -48,3 +48,35 @@ def random_star():
     turtle.color("white", random.choice(["white", "yellow", "lightblue", "lightyellow"]))
     turtle.pendown()
     draw_star(size)
+
+def draw_world(x, y, radius, fill_color):
+    """
+    Draw a filled circle to represent a planet or moon.
+    """
+    turtle.penup()
+    turtle.goto(x, y - radius)
+    turtle.setheading(0)
+    turtle.color(fill_color)
+    turtle.begin_fill()
+    turtle.pendown()
+    turtle.circle(radius)
+    turtle.end_fill()
+
+def draw_celestial_bodies():
+    """
+    Draw the full starry sky: stars and planets with slight delays for effect.
+    """
+    for _ in range(NUM_STARS):
+        random_star()
+        turtle.update()
+        time.sleep(0.01)  # A bit slows star drawing slightly (adjust as needed)
+
+    # Draw three planets
+    for _ in range(PLANET_COUNT):
+        x = random.randint(-SCREEN_WIDTH // 2 + 50, SCREEN_WIDTH // 2 - 50)
+        y = random.randint(-SCREEN_HEIGHT // 2 + 50, SCREEN_HEIGHT // 2 - 50)
+        radius = random.randint(20, 60)
+        color = random.choice(["gray", "blue", "green", "red", "purple"])
+        draw_world(x, y, radius, color)
+        turtle.update()
+        time.sleep(0.01)  # A bit slower delay for planets
