@@ -80,3 +80,14 @@ def draw_celestial_bodies():
         draw_world(x, y, radius, color)
         turtle.update()
         time.sleep(0.01)  # A bit slower delay for planets
+
+
+def main():
+    setup_screen()
+    turtle.tracer(0, 0) # Turn off auto-update (manual update)
+    draw_celestial_bodies()
+    time.sleep(1) # Pause after drawing to admire it
+    input("\nPress Enter to close...\n")
+
+
+main()
